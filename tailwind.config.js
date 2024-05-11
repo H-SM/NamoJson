@@ -4,14 +4,18 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
-    colors: {
-      'text': '#060507',
-      'background': '#fafafc',
-      'primary': '#6963a2',
-      'secondary': '#a7a3cf',
-      'accent': '#837cc3',
-     },        
+    extend: {
+      colors: {
+        'text': '#251601',
+        'background': '#fef7ee',
+        'primary': '#d19248',
+        'secondary': '#acc4c7',
+        'accent': '#eab25f',
+       },
+       fontFamily: { 
+        inter: ["Inter", "sans-serif"]
+       }
+    },    
   },
   plugins: [],
 }
