@@ -61,10 +61,10 @@ const SearchSection = () => {
         className="relative z-20 mx-auto px-4 pt-14 sm:px-6 sm:pt-20 lg:px-8"
       >
         <div className="mx-auto max-w-[45rem] text-center font-inter text-text">
-          <h1 className=" font-extrabold  text-[4rem] lg:text-[3.5rem]">
+          <h1 className=" font-extrabold text-[2.7rem] md:text-[3rem] lg:text-[4rem]">
             <span className='text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text'>Discover</span> users.
           </h1>
-          <p className="mt-4">
+          <p className="mt-4 text-[0.8rem] md:text-[1rem]">
             <i>Explore your journey through captivating user details!</i> Imagine yourself embarking on an exciting journey through the world of <b>NamoJson</b>, it offers a captivating journey through user details, providing a comprehensive view of user identities.
           </p>
         </div>
@@ -72,13 +72,13 @@ const SearchSection = () => {
 
       {users.limit == null ? (
         // loader here 
-        <div className="font-inter text-text font-bold flex flex-col justify-center items-center w-full max-w-[70rem] min-h-[50rem]">
+        <div className="font-inter text-text font-bold flex flex-col justify-center items-center w-[90%] max-w-[70rem] min-h-[50rem]">
           <img src={spinner} alt="spinner" />
           <p className="text-[1.4rem]">Loading...</p>
         </div>
       ) : (
         <>
-          <div className="w-full max-w-[70rem]">
+          <div className="w-[90%] max-w-[70rem]">
             <div className="flex flex-col mt-8 w-[full]">
               <div className="flex w-full justify-end">
                 <div className="block relative w-fit">
@@ -101,7 +101,7 @@ const SearchSection = () => {
                   />
                 </div>
               </div>
-              <div className="overflow-x-auto h-fit min-h-[40rem] flex-row justify-center items-center gap-y-3">
+              <div className="overflow-x-auto h-fit sm:min-h-[20rem] lg:min-h-[40rem] flex-row justify-center items-center gap-y-3">
                 <table className="min-w-full text-left text-sm font-light">
                   <thead className="border-b font-medium dark:border-primary">
                     <tr>
@@ -113,37 +113,37 @@ const SearchSection = () => {
                       </th>
                       <th
                         scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
                       >
                         Company
                       </th>
                       <th
                         scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
                       >
                         Email
                       </th>
                       <th
                         scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
                       >
                         Phone
                       </th>
                       <th
                         scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
                       >
                         University
                       </th>
                       <th
                         scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
                       >
                         <p>BirthDate</p>
                       </th>
                       <th
                         scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
                       >
                         <p>Age</p>
                       </th>

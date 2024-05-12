@@ -14,7 +14,7 @@ const DetailsSection = () => {
                 <div className='bg-text w-[8rem] h-[8rem] rounded-2xl rotate-[80deg]'/>
             </div>
 
-            <div className='w-full h-fit py-6  bg-gradient-to-t from-primary to-accent flex justify-center items-center gap-5 font-inter text-text'>
+            <div className='w-full h-fit py-6  bg-gradient-to-t from-primary to-accent flex flex-wrap justify-center items-center gap-5 font-inter text-text'>
                 <div className='bg-background w-[18rem] h-[11rem] rounded-2xl flex justify-center items-start py-5 z-20'>
                     <div className='w-full mx-3 h-fit flex justify-start gap-2'>
                         <div className='w-8 h-8  mt-2'>
