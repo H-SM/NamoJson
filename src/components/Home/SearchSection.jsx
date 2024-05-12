@@ -1,46 +1,46 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
 // import graphContext from "../context/Graph/graphContext.js";
 
-import userItems from './dummyhere';
 import SearchItem from "./searchItem";
 import userContext from "../../context/UserContext";
-import spinner from "../../assets/spinner.svg"
+import spinner from "../../assets/spinner.svg";
+
 const SearchSection = () => {
   const [active, setActive] = useState(1);
   const [search, setSearch] = useState("");
   const itemsPerPage = 7;
 
   const context = useContext(userContext);
-  const { users, setUsers, getallusers } = context;
+  const { users, getallusers, getsearch } = context;
 
   useMemo(() => {
     if (users.total == null) {
       getallusers();
     }
     console.log(users.total == null);
-    console.log(users);
-  }, [users, getallusers]);
-  // let context = useContext(graphContext);
+  }, [users.total, getallusers]);
 
-  // const sortAndFilteruserItems = (userItems) => {
-  //   switch (sorterGraph) {
-  //     case "Time (new-to-old)":
-  //       return userItems.sort((a, b) => new Date(b.date) - new Date(a.date));
-  //     case "Time (old-to-new)":
-  //       return userItems.sort((a, b) => new Date(a.date) - new Date(b.date));
-  //     case "Favourites":
-  //       return userItems
-  //         .filter((graph) => graph.favourite === true)
-  //         .sort((a, b) => new Date(b.date) - new Date(a.date));
-  //     default:
-  //       return userItems;
-  //   }
-  // };
+  useEffect(() => {
+    if (search.trim() !== "") {
+      const searcher = setTimeout(() => {
+        getsearch({
+          search: search
+        });
+      }, 500);
+
+      return () => clearTimeout(searcher);
+    }else if(search.trim() === ""){
+      getallusers();
+    }
+  }, [search])
+
+
   let totalPages = Math.max(Math.ceil(users.limit / itemsPerPage), 1);
   //prevent overflow on searching
   setTimeout(() => {
     if (active > totalPages) setActive(totalPages);
-  }, 1000)
+  }, 1000);
+
   const next = () => {
     if (active === totalPages) return;
 
@@ -70,7 +70,7 @@ const SearchSection = () => {
         </div>
       </div>
 
-      {users.total == null ? (
+      {users.limit == null ? (
         // loader here 
         <div className="font-inter text-text font-bold flex flex-col justify-center items-center w-full max-w-[70rem] min-h-[50rem]">
           <img src={spinner} alt="spinner" />
@@ -96,6 +96,7 @@ const SearchSection = () => {
                     onChange={(e) => {
                       e.preventDefault();
                       setSearch(e.target.value);
+                      console.log(search);
                     }}
                   />
                 </div>

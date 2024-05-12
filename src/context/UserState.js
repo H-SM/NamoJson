@@ -16,8 +16,8 @@ const UserState = (props) => {
     setUsers(json);
   };
 
-  const getsearch = async () => {
-    const response = await fetch(`https://dummyjson.com/users`, {
+  const getsearch = async ({ search }) => {
+    const response = await fetch(`https://dummyjson.com/users/search?q=${search}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
