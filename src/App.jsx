@@ -1,13 +1,15 @@
 // import logo from './logo.svg';
 import './App.css';
-
+import UserState from "./context/UserState";
 import Navbar from './components/Home/Navbar';
 import Home from './pages/Home';
-function App() {  
+function App() {
   return (
-    <div className="bg-background">
-      <Home/>      
-    </div>
+    <UserState>
+      <div className="bg-background">
+        <Home />
+      </div>
+    </UserState>
   );
 }
 
