@@ -29,7 +29,7 @@ const SearchSection = () => {
       }, 500);
 
       return () => clearTimeout(searcher);
-    }else if(search.trim() === ""){
+    } else if (search.trim() === "") {
       getallusers();
     }
   }, [search])
@@ -102,68 +102,74 @@ const SearchSection = () => {
                 </div>
               </div>
               <div className="overflow-x-auto h-fit sm:min-h-[20rem] lg:min-h-[40rem] flex-row justify-center items-center gap-y-3">
-                <table className="min-w-full text-left text-sm font-light">
-                  <thead className="border-b font-medium dark:border-primary">
-                    <tr>
-                      <th
-                        scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
-                      >
-                        User
-                      </th>
-                      <th
-                        scope="col"
-                        className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
-                      >
-                        Company
-                      </th>
-                      <th
-                        scope="col"
-                        className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
-                      >
-                        Email
-                      </th>
-                      <th
-                        scope="col"
-                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
-                      >
-                        Phone
-                      </th>
-                      <th
-                        scope="col"
-                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
-                      >
-                        University
-                      </th>
-                      <th
-                        scope="col"
-                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
-                      >
-                        <p>BirthDate</p>
-                      </th>
-                      <th
-                        scope="col"
-                        className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
-                      >
-                        <p>Age</p>
-                      </th>
-                      <th
-                        scope="col"
-                        className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-sky-500 px-6"
-                      >
-                        <p className="hidden">Visit</p>
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {users.users
-                      .map((user, index) => (
-                        <SearchItem user={user} key={index} />
-                      ))
-                      .slice(startIndex, endIndex)
-                    }
-                  </tbody>
-                </table>
+                {users.limit === 0 ?
+                  <div className="font-semibold text-text w-full flex justify-center items-center h-[10rem]">
+                    No Such User Exist.
+                  </div>
+                  :
+                  <table className="min-w-full text-left text-sm font-light">
+                    <thead className="border-b font-medium dark:border-primary">
+                      <tr>
+                        <th
+                          scope="col"
+                          className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        >
+                          User
+                        </th>
+                        <th
+                          scope="col"
+                          className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        >
+                          Company
+                        </th>
+                        <th
+                          scope="col"
+                          className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        >
+                          Email
+                        </th>
+                        <th
+                          scope="col"
+                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        >
+                          Phone
+                        </th>
+                        <th
+                          scope="col"
+                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        >
+                          University
+                        </th>
+                        <th
+                          scope="col"
+                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        >
+                          <p>BirthDate</p>
+                        </th>
+                        <th
+                          scope="col"
+                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                        >
+                          <p>Age</p>
+                        </th>
+                        <th
+                          scope="col"
+                          className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-sky-500 px-6"
+                        >
+                          <p className="hidden">Visit</p>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {users.users
+                        .map((user, index) => (
+                          <SearchItem user={user} key={index} />
+                        ))
+                        .slice(startIndex, endIndex)
+                      }
+                    </tbody>
+                  </table>
+                 }
               </div>
             </div>
           </div>
