@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router-dom';
+import userContext from "../../context/UserContext";
+
 
 const SearchItem = ({ user }) => {
-    // const { user, index } = props;
+    const navigate = useNavigate();
+    const context = useContext(userContext);
+    const { setUsers } = context;
     return (
         <tr className="border-b dark:border-primary/60 font-inter">
             <td className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 text-opacity-100 text-text px-6 flex justify-start items-start gap-3">
@@ -35,7 +40,11 @@ const SearchItem = ({ user }) => {
                 {user.age}
             </td>
             <td className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold font-mono  text-opacity-100 text-text px-6">
-                <button className="scale-95 hover:scale-100 transition duration-150 ease-in-out" onClick={() => { }}>
+                <button className="scale-95 hover:scale-100 transition duration-150 ease-in-out" onClick={() => {
+                    setUsers({});
+                    navigate(`/user/${user.username}`)
+                }
+                }>
                     View
                     <span aria-hidden="true" className="ml-1">
                         →

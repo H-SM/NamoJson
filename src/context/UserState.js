@@ -4,29 +4,46 @@ const UserState = (props) => {
   const [users, setUsers] = useState({});
 
   const getallusers = async () => {
-    const response = await fetch(`https://dummyjson.com/users`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const response = await fetch(`https://dummyjson.com/users`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    const json = await response.json();
-    console.log(json);
-    setUsers(json);
+      if (!response.ok) {
+        throw new Error("Failed to fetch users");
+      }
+
+      const json = await response.json();
+      setUsers(json);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   };
 
   const getsearch = async ({ search }) => {
-    const response = await fetch(`https://dummyjson.com/users/search?q=${search}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    try {
+      const response = await fetch(
+        `https://dummyjson.com/users/search?q=${search}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-    const json = await response.json();
-    console.log(json);
-    setUsers(json);
+      if (!response.ok) {
+        throw new Error("Failed to search users");
+      }
+
+      const json = await response.json();
+      setUsers(json);
+    } catch (error) {
+      console.error("Error searching users:", error);
+    }
   };
   return (
     <UserContext.Provider
@@ -43,4 +60,3 @@ const UserState = (props) => {
 };
 
 export default UserState;
-    
