@@ -89,9 +89,10 @@ NamoJson is more than just a data-browsing platform; it's a testament to the sea
 
 1. **Visit the Website:** Begin your journey by entering the NamoJson website. Whether you're accessing it from your desktop, laptop, or mobile device, simply navigate to the URL to immerse yourself in a world of tranquil data exploration.
 2. **Scroll Down to the Discover Users Section:** Once you've landed on the NamoJson homepage, scroll down until you reach the "Discover Users" section. Here, you'll find a curated collection of users waiting to be explored.
-3. **Scroll Through the Users or Use the Search Bar:** Take your time to leisurely scroll through the list of users. Each user is presented with key information to pique your interest, allowing you to discover fascinating insights with every scroll, or if you're looking for a specific user, simply utilize the search bar located within the "Discover Users" section. Enter the name of the user you're searching for, and let NamoJson work its magic. In moments, you'll be presented with relevant search results, making it easier than ever to find the user you're looking for.
-4. **Dive Into Data Exploration:** With NamoJson, the possibilities are endless. Whether you're exploring users out of curiosity or conducting in-depth research, let the serene interface and intuitive design guide you through a seamless data exploration experience.
-
+3. **Dive Into Data Exploration:** With NamoJson, the possibilities are endless. Whether you're exploring users out of curiosity or conducting in-depth research, let the serene interface and intuitive design guide you through a seamless data exploration experience.
+4. **Search Debouncing:** Ensures efficient search functionality by delaying API calls until the user stops typing.
+5. **Paging (of table content):** Enables seamless navigation through large datasets by dividing content into manageable pages.
+6. **Simple UI:** Provides an intuitive and clutter-free interface for easy user interaction and navigation.
 <p align="right">(<a href="#top">Back to top</a>)</p>
 <hr/>
 
