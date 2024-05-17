@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import UserContext from "./UserContext";
 const UserState = (props) => {
   const [users, setUsers] = useState({});
+  const [dark, setDark] = useState(0);
 
   const getallusers = async () => {
     try {
@@ -52,6 +53,8 @@ const UserState = (props) => {
         setUsers,
         getallusers,
         getsearch,
+        dark, 
+        setDark,
       }}
     >
       {props.children}

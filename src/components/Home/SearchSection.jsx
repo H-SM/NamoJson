@@ -11,13 +11,12 @@ const SearchSection = () => {
   const itemsPerPage = 7;
 
   const context = useContext(userContext);
-  const { users, getallusers, getsearch } = context;
+  const { users, getallusers, getsearch, dark } = context;
 
   useMemo(() => {
     if (users.total == null) {
       getallusers();
     }
-    console.log(users.total == null);
   }, [users.total, getallusers]);
 
   useEffect(() => {
@@ -60,9 +59,9 @@ const SearchSection = () => {
       <div id="history"
         className="relative z-20 mx-auto px-4 pt-14 sm:px-6 sm:pt-20 lg:px-8"
       >
-        <div className="mx-auto max-w-[45rem] text-center font-inter text-text">
+        <div className={`mx-auto max-w-[45rem] text-center font-inter ${dark === 1 ? "text-text-dark" : "text-text"}`}>
           <h1 className=" font-extrabold text-[2.7rem] md:text-[3rem] lg:text-[4rem]">
-            <span className='text-transparent bg-gradient-to-r from-primary to-accent bg-clip-text'>Discover</span> users.
+            <span className={`text-transparent bg-gradient-to-r ${dark === 1 ? "from-primary-dark to-accent-dark" : "from-primary to-accent"} bg-clip-text`}>Discover</span> users.
           </h1>
           <p className="mt-4 text-[0.8rem] md:text-[1rem]">
             <i>Explore your journey through captivating user details!</i> Imagine yourself embarking on an exciting journey through the world of <b>NamoJson</b>, it offers a captivating journey through user details, providing a comprehensive view of user identities.
@@ -72,7 +71,7 @@ const SearchSection = () => {
 
       {users.limit == null ? (
         // loader here 
-        <div className="font-inter text-text font-bold flex flex-col justify-center items-center w-[90%] max-w-[70rem] min-h-[50rem]">
+        <div className={`font-inter ${dark === 1 ? "text-text-dark" : "text-text"} font-bold flex flex-col justify-center items-center w-[90%] max-w-[70rem] min-h-[50rem]`}>
           <img src={spinner} alt="spinner" />
           <p className="text-[1.4rem]">Loading...</p>
         </div>
@@ -85,14 +84,14 @@ const SearchSection = () => {
                   <span className="h-full absolute inset-y-0 left-0 flex items-center pl-2">
                     <svg
                       viewBox="0 0 24 24"
-                      className="h-4 w-4 fill-current text-text"
+                      className={`h-4 w-4 fill-current text-text`}
                     >
                       <path d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z"></path>
                     </svg>
                   </span>
                   <input
                     placeholder="Search (Name)"
-                    className="rounded-md border border-primary border-b block pl-8 pr-6 py-2 w-full outline-none  text-sm focus:ring-0 focus:ring-offset-0"
+                    className={`rounded-md border border-primary border-b block pl-8 pr-6 py-2 w-full outline-none  text-sm focus:ring-0 focus:ring-offset-0`}
                     onChange={(e) => {
                       e.preventDefault();
                       setSearch(e.target.value);
@@ -103,7 +102,7 @@ const SearchSection = () => {
               </div>
               <div className="overflow-x-auto h-fit sm:min-h-[20rem] lg:min-h-[40rem] flex-row justify-center items-center gap-y-3">
                 {users.limit === 0 ?
-                  <div className="font-semibold text-text w-full flex justify-center items-center h-[10rem]">
+                  <div className={`font-semibold ${dark === 1 ? "text-text-dark" : "text-text"} w-full flex justify-center items-center h-[10rem]`}>
                     No Such User Exist.
                   </div>
                   :
@@ -112,43 +111,43 @@ const SearchSection = () => {
                       <tr>
                         <th
                           scope="col"
-                          className="py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                          className={`py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 ${dark === 1 ? "text-text-dark" : "text-text"} px-6`}
                         >
                           User
                         </th>
                         <th
                           scope="col"
-                          className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                          className={`hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 ${dark === 1 ? "text-text-dark" : "text-text"} px-6`}
                         >
                           Company
                         </th>
                         <th
                           scope="col"
-                          className="hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                          className={`hidden sm:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 ${dark === 1 ? "text-text-dark" : "text-text"} px-6`}
                         >
                           Email
                         </th>
                         <th
                           scope="col"
-                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                          className={`hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 ${dark === 1 ? "text-text-dark" : "text-text"} px-6`}
                         >
                           Phone
                         </th>
                         <th
                           scope="col"
-                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                          className={`hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 ${dark === 1 ? "text-text-dark" : "text-text"} px-6`}
                         >
                           University
                         </th>
                         <th
                           scope="col"
-                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                          className={`hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 ${dark === 1 ? "text-text-dark" : "text-text"} px-6`}
                         >
                           <p>BirthDate</p>
                         </th>
                         <th
                           scope="col"
-                          className="hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 text-text px-6"
+                          className={`hidden lg:table-cell py-[0.875rem] pl-[1rem] pr-[0.75rem] text-left text-[0.875rem] leading-5 font-bold text-opacity-100 ${dark === 1 ? "text-text-dark" : "text-text"} px-6`}
                         >
                           <p>Age</p>
                         </th>
@@ -174,22 +173,22 @@ const SearchSection = () => {
             </div>
           </div>
           {totalPages > 1 && (
-            <div className="flex items-center justify-center gap-1 w-full mt-3">
+            <div className={`flex items-center justify-center gap-1 w-full mt-3 ${dark === 1 ? "text-text-dark/90" : "text-text/90"}`}>
               <button className="w-fit disabled:opacity-45"
                 onClick={prev}
                 disabled={active === 1}
               >
-                <svg viewBox="0 0 24 24" className="w-5" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 7L10 12L15 17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                <svg viewBox="0 0 24 24" className="w-5" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15 7L10 12L15 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
               </button>
               <div className="font-normal">
-                Page <strong className="text-gray-900">{active}</strong> /{" "}
-                <strong className="text-gray-900">{totalPages}</strong>
+                Page <strong className={`${dark === 1 ? "text-text-dark" : "text-text"}`}>{active}</strong> /{" "}
+                <strong className={`${dark === 1 ? "text-text-dark" : "text-text"}`}>{totalPages}</strong>
               </div>
               <button className="w-fit disabled:opacity-45"
                 onClick={next}
                 disabled={active === totalPages}
               >
-                <svg viewBox="0 0 24 24" className="w-5" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 7L15 12L10 17" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                <svg viewBox="0 0 24 24" className="w-5" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 7L15 12L10 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
               </button>
             </div>
           )}

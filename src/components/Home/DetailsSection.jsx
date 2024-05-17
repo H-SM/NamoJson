@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import fetchSvg from "./../../assets/fetch.svg";
 import displaySvg from "./../../assets/display.svg";
 import searchSvg from "./../../assets/search.svg";
+import userContext from "../../context/UserContext";
 
 const DetailsSection = () => {
+    const context = useContext(userContext);
+    const { dark } = context;
+
     return (
         <div className='relative w-full h-fit z-0 overflow-hidden my-5'>
             <div className='absolute z-10  left-[10%] top-[-20%] animate-bounce-slow opacity-70'>
-                <div className='bg-text w-[8rem] h-[8rem] rounded-2xl rotate-[30deg]'/>
+                <div className={`${dark === 1 ? "bg-text-dark" : "bg-text"} w-[8rem] h-[8rem] rounded-2xl rotate-[30deg]`}/>
             </div>
 
             <div className=' absolute z-10 right-[10%] bottom-[-20%] animate-bounce-slow-late opacity-70'>
-                <div className='bg-text w-[8rem] h-[8rem] rounded-2xl rotate-[80deg]'/>
+                <div className={`${dark === 1 ? "bg-text-dark" : "bg-text"} w-[8rem] h-[8rem] rounded-2xl rotate-[80deg]`}/>
             </div>
 
-            <div className='w-full h-fit py-6  bg-gradient-to-t from-primary to-accent flex flex-wrap justify-center items-center gap-5 font-inter text-text'>
+            <div className={`w-full h-fit py-6  bg-gradient-to-t ${dark === 1 ? "from-primary-dark to-accent-dark" : "from-primary to-accent"}  flex flex-wrap justify-center items-center gap-5 font-inter text-text`}>
                 <div className='bg-background w-[18rem] h-[11rem] rounded-2xl flex justify-center items-start py-5 z-20'>
                     <div className='w-full mx-3 h-fit flex justify-start gap-2'>
                         <div className='w-8 h-8  mt-2'>

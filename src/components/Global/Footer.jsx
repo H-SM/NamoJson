@@ -1,11 +1,15 @@
-import React from 'react'
-import logo from "./../../assets/namoJson_logo.png"
+import React, { useContext } from 'react'
+import logo from "./../../assets/namoJson_logo.png";
+import userContext from "../../context/UserContext";
+
 const Footer = () => {
+    const context = useContext(userContext);
+    const { dark } = context;
     return (
-        <div className='bg-accent/20 w-full max-w-[80rem] h-fit rounded-md mt-2 xl:my-5 lg:mx-3 flex flex-col items-center justify-center py-2'>
-            <div className='w-full md:w-[90%] lg:w-[80%] py-8 flex justify-between items-start border-b border-primary'>
+        <div className={`${dark === 1 ? "bg-accent-dark/20 text-text-dark" : "bg-accent/20 text-text" } w-full max-w-[80rem] h-fit rounded-md mt-2 xl:my-5 lg:mx-3 flex flex-col items-center justify-center py-2`}>
+            <div className={`${dark === 1 ? "border-primary-dark" : "border-primary" } w-full md:w-[90%] lg:w-[80%] py-8 flex justify-between items-start border-b `}>
                 <div className='ml-4 md:ml-0 flex justify-start items-start md:w-[20%]'>
-                    <img src={logo} className="w-[11rem] md:w-[10rem]" alt="" />
+                    <img src={logo} className={`${dark === 1 && "invert opacity-70"} w-[11rem] md:w-[10rem]`} alt="" />
                 </div>
                 <div className='hidden lg:flex flex-col w-fit h-fit font-inter'>
                     <h1 className='font-semibold'>Explore</h1>

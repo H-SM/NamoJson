@@ -9,7 +9,7 @@ import Users from './pages/Users';
 function App() {
   return (
     <UserState>
-      <div className="bg-background">
+      <div className=' scroll-smooth focus:scroll-auto'>
         <Router>
           <Routes>
             <Route exact path="/" element={<Home/>} />
