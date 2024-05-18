@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useMemo, useState } from "react";
-// import graphContext from "../context/Graph/graphContext.js";
 
 import SearchItem from "./searchItem";
 import userContext from "../../context/UserContext";
@@ -7,6 +6,7 @@ import spinner from "../../assets/spinner.svg";
 
 const SearchSection = () => {
   const [active, setActive] = useState(1);
+  const [initial, setInitial] = useState(0);
   const [search, setSearch] = useState("");
   const itemsPerPage = 7;
 
@@ -14,10 +14,14 @@ const SearchSection = () => {
   const { users, getallusers, getsearch, dark } = context;
 
   useMemo(() => {
-    if (users.total == null) {
-      getallusers();
-    }
-  }, [users.total, getallusers]);
+    const fetchData = async () => {
+      if (users.total == null) {
+        await getallusers();
+      }
+    };
+
+    fetchData();
+  }, [users.total]);
 
   useEffect(() => {
     if (search.trim() !== "") {
@@ -25,13 +29,14 @@ const SearchSection = () => {
         getsearch({
           search: search
         });
+        setInitial(1);
       }, 500);
 
       return () => clearTimeout(searcher);
-    } else if (search.trim() === "") {
+    } else if (search.trim() === "" && initial === 1) {
       getallusers();
     }
-  }, [search])
+  }, [search, initial]);   
 
 
   let totalPages = Math.max(Math.ceil(users.limit / itemsPerPage), 1);
@@ -168,7 +173,7 @@ const SearchSection = () => {
                       }
                     </tbody>
                   </table>
-                 }
+                }
               </div>
             </div>
           </div>
