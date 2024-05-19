@@ -1,25 +1,50 @@
-// Original import with potential unused imports
-import {
-  configure,
-  fireEvent,
-  logRoles,
-  render,
-  screen,
-  within,
-} from "@testing-library/react";
-import Home from "../pages/Home";
-// import renderer, { act } from 'react-test-renderer';
-import userEvent from "@testing-library/user-event";
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
+import HeroSection from "./../components/Home/HeroSection";
+import UserState from "../context/UserState";
 import UserContext from "../context/UserContext";
+import SearchSection from "../components/Home/SearchSection";
+import { MemoryRouter } from "react-router-dom";
 
-test("Test 1 - Home rendering", () => {
-  const contextValue = { dark: 0, setDark: jest.fn() };
-
+test('renders Home\'s HeroSection component with text "NamoJson"', () => {
   render(
-    <UserContext.Provider value={contextValue}>
-      <Home />
+    <UserState>
+      <HeroSection />
+    </UserState>
+  );
+
+  const textElements = screen.getAllByText(/NamoJson/i);
+  expect(textElements.length).toBeGreaterThan(0);
+});
+
+test('renders Home\'s SearchSection component with text "NamoJson"', () => {
+  render(
+    <UserState>
+      <SearchSection />
+    </UserState>
+  );
+
+  const textElements = screen.getAllByText(/NamoJson/i);
+  expect(textElements.length).toBeGreaterThan(0);
+});
+
+const mockContextValue = {
+  users: {},
+  getallusers: jest.fn(),
+  getsearch: jest.fn(),
+  dark: 0,
+};
+
+test("Overlooking Loading State...", async () => {
+  render(
+    <UserContext.Provider value={mockContextValue}>
+      <MemoryRouter>
+        <SearchSection />
+      </MemoryRouter>
     </UserContext.Provider>
   );
-  const linkElement = screen.getByText(/Namojson./i);
-  expect(linkElement).toBeInTheDocument();
+
+  // Verify loading state
+  expect(screen.getByText(/Loading.../i)).toBeInTheDocument();
 });
