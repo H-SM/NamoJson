@@ -6,22 +6,22 @@ import spinner from "../../assets/spinner.svg";
 
 const SearchSection = () => {
   const [active, setActive] = useState(1);
-  const [initial, setInitial] = useState(0);
+  // const [initial, setInitial] = useState(0);
   const [search, setSearch] = useState("");
   const itemsPerPage = 7;
 
   const context = useContext(userContext);
   const { users, getallusers, getsearch, dark } = context;
 
-  useMemo(() => {
-    const fetchData = async () => {
-      if (users.total == null) {
-        await getallusers();
-      }
-    };
+  // useMemo(() => {
+  //   const fetchData = async () => {
+  //     if (users.total == null) {
+  //       await getallusers();
+  //     }
+  //   };
 
-    fetchData();
-  }, [users.total]);
+  //   fetchData();
+  // }, [users.total]);
 
   useEffect(() => {
     if (search.trim() !== "") {
@@ -29,14 +29,14 @@ const SearchSection = () => {
         getsearch({
           search: search
         });
-        setInitial(1);
+        // setInitial(1); 
       }, 500);
 
       return () => clearTimeout(searcher);
-    } else if (search.trim() === "" && initial === 1) {
+    } else if (search.trim() === "") {
       getallusers();
     }
-  }, [search, initial]);   
+  }, [search]);
 
 
   let totalPages = Math.max(Math.ceil(users.limit / itemsPerPage), 1);
